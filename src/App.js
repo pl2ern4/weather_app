@@ -18,12 +18,16 @@ class App extends Component {
 			intlDate = new Intl.DateTimeFormat( undefined, options );
 			return intlDate.format( new Date( 1000 * timeStamp) );
 		}
+		handleKey(e)
+		{
+			if(e.which===13)
+				this.weatherForecast(e);
+		}
 		weatherForecast(e){
 			var city = document.getElementById('city').value;
 			if(city.trim()==="")
 				return false;
 			
-			console.log(city);
 		   axios.get('http://openweathermap.org/data/2.5/forecast?q='+city+'&appid=b1b15e88fa797225412429c1c50c122a1')
               .then(function (response) {
 				        console.log(response.request.response)
@@ -67,9 +71,9 @@ class App extends Component {
 					<h2>Search Weather here</h2>
 					<div id="custom-search-input">
 						<div className="input-group col-md-12">
-							<input id="city" type="text" className="form-control input-lg" placeholder="Eg: London" />
+							<input id="city" type="text" className="form-control input-lg" placeholder="Eg: London" onKeyUp={this.handleKey.bind(this)} />
 							<span className="input-group-btn">
-								<button className="btn btn-info btn-lg" type="button" onClick={this.weatherForecast.bind(this)}>
+	  <button className="btn btn-info btn-lg" type="button" onClick={this.weatherForecast.bind(this)}>
 									<i className="glyphicon glyphicon-search"></i>
 								</button>
 							</span>
@@ -93,7 +97,7 @@ class App extends Component {
 				<TableHeaderColumn row='1' dataField='chance'>Chance</TableHeaderColumn>
 				<TableHeaderColumn row='1' dataField='amt'>Amount</TableHeaderColumn>
 			</BootstrapTable>
-			:"Sorry No Data Available"}
+			:""}
 			
 		</div>
 		);
