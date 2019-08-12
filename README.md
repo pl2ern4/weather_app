@@ -2,27 +2,27 @@
 
 
 
-1 ) open terminal 
+- Open terminal 
 
-2) make directory using command below:
+- Make directory using command below:
 
 ```
 mkdir weather_app
 ```
 
-3) take checkout :
+- Take checkout :
 
 ```
 git clone https://github.com/pl2ern4/weather_app.git .
 ```
 
-4) Install all the dpendencies and start project
+- Install all the dpendencies and start project
 
 ```
 npm install && npm start
 ```
 
-6) Can check using 
+- Can unit test using: 
 
 ```
 npm test 
