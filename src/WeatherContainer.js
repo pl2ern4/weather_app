@@ -20,7 +20,7 @@ class WeatherContainer extends Component{
 
         return(
             <>
-                <WeatherComponent cityList={cityList} getWeather={this.getWeather}/>
+                <WeatherInputComponent cityList={cityList} getWeather={this.getWeather}/>
                 {isLoading && <CircularProgress />}
                 {((!isEmpty(weatherDetail) && <WeatherDetailComponent weatherDetail={weatherDetail}/>) || null)}
             </>
