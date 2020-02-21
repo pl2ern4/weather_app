@@ -2,19 +2,24 @@ import React,{ Component } from 'react';
 import {connect} from 'react-redux'; 
 import WeatherComponent from './WeatherComponent';
 import WeatherDetailComponent from './WeatherDetailComponent';
-import { getCityListAction } from './actions';
+import { getCityListAction, getWeatherAction } from './actions';
 
 class WeatherContainer extends Component{
-    componentDidMount(){
-        this.props.getCityList();
+    
+    construct(props){
+        super(props);
+        props.getCityList();
     }
+
+    getWeather=payload=> this.props.getWeather(payload);
+
     render(){
         const {cityList, weatherDetail} = this.props;
 
         return(
             <>
                 <WeatherComponent cityList={cityList}/>
-                {(weatherDetail && <WeatherDetailComponent weatherDetail/> || null)}
+                {(weatherDetail && <WeatherDetailComponent getWeather={this.getWeather} weatherDetail/> || null)}
             </>
         )
     }
@@ -23,12 +28,14 @@ class WeatherContainer extends Component{
 const mapStateToProps = state =>{
     console.log(state,'state')
     return {
-        cityList: state.cityList||[]
+        cityList: state.cityList||[],
+        weatherDetail: state.weatherDetail||[]
     }
 }
 
 const mapDispatchToProps = dispatch =>({
-    getCityList : ()=>getCityListAction()(dispatch)    
+    getCityList : ()=>getCityListAction()(dispatch),
+    getWeather :  params=>getWeatherAction(params)(dispatch)    
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(WeatherContainer);
