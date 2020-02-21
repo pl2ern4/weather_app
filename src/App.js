@@ -5,7 +5,6 @@ import thunk from 'redux-thunk';
 import './App.css';
 import {rootReducer} from './reducers';
 import WeatherContainer from './WeatherContainer';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
 const store = createStore(rootReducer, 
                         applyMiddleware(thunk));

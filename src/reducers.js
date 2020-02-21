@@ -2,7 +2,7 @@ import { appConstant } from './constant';
 
 const initialState = {
     isLoading:false,
-    weatherDetail:{},
+    weatherDetail:[],
     cityList:[],
 }
 

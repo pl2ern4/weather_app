@@ -17,6 +17,12 @@ export const getCityListAction = payload =>{
 export const getWeatherAction = payload =>{
     return dispatch=>{
         dispatch({type:appConstant.LOADING});
-        getCityWeatherService().then(resp=>dispatch({type:appConstant.WEATHER_RESPONSE, weatherDetail:resp}))
+        getCityWeatherService(payload)
+        .then(resp=>{
+            dispatch({
+                type:appConstant.WEATHER_RESPONSE,
+                weatherDetail:resp.list
+            });
+        })
     }
 }
