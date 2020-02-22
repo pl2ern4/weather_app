@@ -2,7 +2,7 @@ import React from 'react';
 import { head } from 'lodash';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
-const WeatherDetailComponent = props =>{ console.log(props,'props')
+const WeatherDetailComponent = props =>{
     const getTime = timeStamp=>{
         var options = {
             weekday: 'short',
@@ -31,7 +31,7 @@ const WeatherDetailComponent = props =>{ console.log(props,'props')
                 <TableHeaderColumn row='0' colSpan='3'>Conditions</TableHeaderColumn>
                 <TableHeaderColumn row='0' colSpan='3'>Comfort</TableHeaderColumn>
                 <TableHeaderColumn row='1' dataField='dt'>Day</TableHeaderColumn>
-                <TableHeaderColumn row='1' dataField='img' dataFormat={img=>`<img src="http://openweathermap.org/img/w/${img}.png" width="40" height="40"/>`}></TableHeaderColumn>
+                <TableHeaderColumn row='1' dataField='img' dataFormat={img=>`<img src="https://openweathermap.org/img/w/${img}.png" width="40" height="40"/>`}></TableHeaderColumn>
                 <TableHeaderColumn row='1' dataField='temperature'>Temperature</TableHeaderColumn>
                 <TableHeaderColumn row='1' dataField='weather'>Weather</TableHeaderColumn>
                 <TableHeaderColumn row='1' dataField='feels_like'>Feels Like</TableHeaderColumn>
