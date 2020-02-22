@@ -17,6 +17,6 @@ export const getCityListService = () =>{
 }
 
 export const getCityWeatherService = payload=>{
-    const URL= `http://api.openweathermap.org/data/2.5/forecast?id=${((payload && payload.id)||'14256')}&APPID=771d67e00059108e0fb1d280194d3bf2`;
+    const URL= `https://api.openweathermap.org/data/2.5/forecast?id=${((payload && payload.id)||'14256')}&APPID=771d67e00059108e0fb1d280194d3bf2`;
     return getApiResponse(URL).then(resp=>resp);
 }
