@@ -177,42 +177,84 @@ table td, table th {
 	text-align: right; 
 	color: #999;
 } 
-#custom-search-input{
-    padding: 3px;
-	margin-bottom: 6%;
-    border: solid 1px #E4E4E4;
-    border-radius: 6px;
-    background-color: #fff;
-}
 
-#custom-search-input input{
-    border: 0;
-    box-shadow: none;
-}
-
-#custom-search-input button{
-    margin: 2px 0 0 0;
-    background: none;
-    box-shadow: none;
-    border: 0;
-    color: #666666;
-    padding: 0 8px 0 10px;
-    border-left: solid 1px #ccc;
-}
-
-#custom-search-input button:hover{
-    border: 0;
-    box-shadow: none;
-    border-left: solid 1px #ccc;
-}
-
-#custom-search-input .glyphicon-search{
-    font-size: 23px;
-
-}
 .table{
 	margin-bottom: 0px;
 }
-.react-bs-container-body{
-	margin-bottom:6%;
+
+input#search-city-input {
+    width: 95%;
+    margin: 1%;
+    padding: 0.5% 0 0.5% 0.5%;
+    border-radius: 10px;
+}
+input#search-city-input:focus {
+    outline-width: 0;
+}
+li {
+    /* border: 1px solid #0000004f; */
+    padding:  1% 0% 0 0%;
+    border-radius: 8px;
+    width: 98%;
+    cursor: pointer;
+}
+ul{
+    
+    list-style: none;
+    padding: 0 0 0 1%;
+    border: 2px solid #2222226b;
+    margin: -1% 0 0 1%;
+    z-index: 1;
+    border-top: none;
+    width: 95%;
+    background-color: white;
+    position: absolute;
+}
+
+.selection-option{
+    margin: 1%!important;
+    padding: 0.5% 0 0.5% 1%!important;
+    border-radius: none!important;
+    border-bottom-style: none!important;
+    border-bottom-right-radius: unset!important;
+    border-bottom-left-radius: unset!important;
+}
+
+
+
+
+input:focus ~ .floating-label,
+input:not(:focus):valid ~ .floating-label{
+  top: 8px;
+  left: 20px;
+  font-size: 11px;
+  opacity: 1;
+  z-index: 1;
+  background-color: #fff;
+}
+
+.inputText {
+    z-index: 0;
+    font-size: 14px;
+    width: 200px;
+    outline-width: 0;
+    width: 95%;
+    margin: 1%;
+    padding: 0.5% 0 0.5% 0.5%;
+    border-radius: 10px;
+}
+
+.floating-label {
+  position: absolute;
+  pointer-events: none;
+  left: 30px;
+  top: 22px;
+  transition: 0.2s ease all;
+}
+
+.MuiCircularProgress-root.MuiCircularProgress-colorPrimary.MuiCircularProgress-indeterminate {
+    position: absolute!important;
+    top: 50%!important;
+    left: 50%!important;
+    margin-right: -50%!important;
 }

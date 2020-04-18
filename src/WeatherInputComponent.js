@@ -1,23 +1,39 @@
-import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import React,{useState} from 'react';
+import { throttle  } from "throttle-debounce";
 
 const WeatherInputComponent = props =>{
-    const [value,setValue] = React.useState(null);
-    return <Autocomplete
-                id="free-solo-demo"
-                freeSolo
-                value={value}
-                onChange={(event, newValue) => {
-                    props.getWeather(newValue);
-                    setValue(newValue);
-                    return;
-                }}
-                options={props.cityList && props.cityList.map(option => option.title)}
-                renderInput={params => (
-                    <TextField {...params} label="freeSolo" margin="normal" variant="outlined" fullWidth />
-                )}
-            />
+
+    const [selectedValue,setSelectedValue] = useState('');
+    const [showOption,setshowOption] = useState(props.cityList.length>0);
+
+
+    const onChange= e =>{ 
+        setSelectedValue(e.target.value);
+        if(e.target.value){
+            props.getCityList({"city":e.target.value});
+            setshowOption(true);
+        }
+    }
+
+    const handleClickCityOption = e => {
+        setSelectedValue(e.title);
+        setshowOption(false);
+        props.getWeather({"id":e.id});
+        
+    }
+
+    return (<>
+        <input 
+            type="text" 
+            className={`inputText ${(showOption && `selection-option`)||''}`} 
+            onChange={e=>throttle(10000, onChange(e))}
+            value={selectedValue}
+            required/>
+       <span className="floating-label">Select City</span>   
+       {showOption &&  <ul>
+            {props.cityList.map(obj=><li key={obj.id} id={obj.id} onClick={e=>handleClickCityOption({...obj})}>{obj.title}</li>)}
+        </ul>} 
+    </>)
 }
 
 export default WeatherInputComponent;

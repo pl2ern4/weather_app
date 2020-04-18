@@ -9,7 +9,8 @@ const initialState = {
 export const rootReducer = (state=initialState, action) =>{
     switch(action.type){
         case appConstant.LOADING:
-            return {isLoading:true, ...state};
+            const {type,...newState} = action;
+            return {...state,isLoading:true,...newState};
         case appConstant.GET_CITY_RESPONSE:
             return {...state, cityList:action.cityList, isLoading:false};
         case appConstant.WEATHER_RESPONSE:

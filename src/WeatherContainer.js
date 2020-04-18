@@ -10,8 +10,12 @@ class WeatherContainer extends Component{
     
     constructor(props){
         super(props);
-        props.getCityList();
+        this.state={
+            isEmptyTextbox:''
+        }
     }
+
+    getCityList=payload=> this.props.getCityList(payload);
 
     getWeather=payload=> this.props.getWeather(payload);
 
@@ -20,7 +24,7 @@ class WeatherContainer extends Component{
 
         return(
             <>
-                <WeatherInputComponent cityList={cityList} getWeather={this.getWeather}/>
+                <WeatherInputComponent cityList={cityList} getCityList={this.getCityList} getWeather={this.getWeather}/>
                 {isLoading && <CircularProgress />}
                 {((!isEmpty(weatherDetail) && <WeatherDetailComponent weatherDetail={weatherDetail}/>) || null)}
             </>
@@ -37,7 +41,7 @@ const mapStateToProps = state =>{
 }
 
 const mapDispatchToProps = dispatch =>({
-    getCityList : ()=>getCityListAction()(dispatch),
+    getCityList : params=>getCityListAction(params)(dispatch),
     getWeather :  params=>getWeatherAction(params)(dispatch)    
 })
 

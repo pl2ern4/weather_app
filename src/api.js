@@ -1,16 +1,23 @@
+
+const headers = {"content-type":"application/json;charset=UTF-8"};
+
 const getApiResponse = payload =>{
-    return fetch(payload)
-    .then(res=> res)
+    return fetch(payload,{...headers,method:'GET'})
+    .then(res=> {
+        
+        return res;
+    })
     .then(res=>res.json());    
 }
 
 
-export const getCityListService = () =>{
-    const URL = "https://pl2ern4.github.io/weather-cities/";
+export const getCityListService = payload =>{
+    // const URL = `http://localhost:4000/search?name=${payload && payload.city||''}`;
+    const URL = `https://city-list-for-weather.herokuapp.com/search?name=${(payload && payload.city)||''}`;
     let cityList=[];
     return getApiResponse(URL).then(resp=>{
         return new Promise((resolve,reject)=>{
-            cityList=resp.map(obj=>({"title":obj["city"]["name"],"id":obj["city"]["id"]["$numberLong"]}));
+            cityList=resp.data.map(obj=>({"title":`${obj["name"]} ${obj["country"]}`,"id":obj["id"]}));
             resolve(cityList);
         }).then(resp=>resp);
     })

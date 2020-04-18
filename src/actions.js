@@ -2,9 +2,9 @@ import { getCityListService, getCityWeatherService } from './api';
 import { appConstant } from './constant';
 
 export const getCityListAction = payload =>{
+    
     return dispatch=>{
-        dispatch({type:appConstant.LOADING})
-        getCityListService().then(resp=>{
+        getCityListService(payload).then(resp=>{
             if(resp){
                 dispatch({
                     type: appConstant.GET_CITY_RESPONSE,
@@ -16,7 +16,7 @@ export const getCityListAction = payload =>{
 
 export const getWeatherAction = payload =>{
     return dispatch=>{
-        dispatch({type:appConstant.LOADING});
+        dispatch({type:appConstant.LOADING,weatherDetail:[]});
         getCityWeatherService(payload)
         .then(resp=>{
             dispatch({
