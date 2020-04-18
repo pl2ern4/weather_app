@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     table: {
       minWidth: 650,
       zIndex:0,
-      position:'fixed'
+      position:'absolute'
     },
     mainHeader:{
         fontWeight:900,
